@@ -1,0 +1,46 @@
+<h1>Eat-Da-Burger!</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <ul>
+                {{#each burgers}}
+                    {{#unless this.devoured}}
+                        <div class=" card avaiable-burgers">
+                            <div> {{this.id}}.{{this.burger_name}}
+
+                                <form action="/api/burgers/{{this.id}}" method="PUT">
+                                    <button type="submit">DEVOUR IT!</button>
+                                </form>
+                            </div>
+                        </ul>
+                    {{/unless}}
+                {{/each}}
+            </ul>        
+        </div>
+
+        <div class="col-md-5">
+            {{#each burgers}}
+                {{#if this.devoured}}
+                    <div class="eaten-burger">
+                        <div>
+                            {{this.burger_name}}
+                        </div>
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<h2>Add A Burger to the list!</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <form action="update/burgers" method="POST">
+	        <input type="text" id="burger-name" name="burger_name"></input>
+        	<button type="submit" id="add-burger">Add Burger</button>
+        </form>
+    </div>
+</div>
+
