@@ -43,11 +43,11 @@ function objToSql(ob) {
 var orm = {
   selectAll: function(tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(err, result) {
+    connection.query(queryString, function(err, data) {
       if (err) {
         throw err;
       }
-      cb(result);
+      cb(data);
     });
   },
   insertOne: function(table, cols, vals, cb) {
@@ -62,34 +62,31 @@ var orm = {
 
     console.log(queryString);
 
-    connection.query(queryString, vals, function(err, result) {
+    connection.query(queryString, vals, function(err, data) {
       if (err) {
         throw err;
       }
 
-      cb(result);
+      cb(data);
     });
   },
   // An example of objColVals would be {name: panther, sleepy: true}
   updateOne: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
-
     queryString += " SET ";
     queryString += objToSql(objColVals);
     queryString += " WHERE ";
     queryString += condition;
 
     console.log(queryString);
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
+    connection.query(queryString, function(err, data) {
+      if (err) throw err;
 
-      cb(result);
+      cb(data);
     });
   }
 
 };
 
-// Export the orm object for the model (cat.js).
+// Export the orm object for the model (burger.js).
 module.exports = orm;
