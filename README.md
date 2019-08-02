@@ -1,8 +1,9 @@
 # Eat-Da-Burger
 ## Creator: Alexis Rajis
 
-#### LINK:
-https://arajis06.github.io/FriendFinder/
+#### APP LINK:
+https://git.heroku.com/frozen-garden-82625.git
+
 
 
 ### Overview
